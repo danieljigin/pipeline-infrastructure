@@ -101,7 +101,7 @@ Resources:
         Type: CODEPIPELINE
       Environment:
         ComputeType: !Ref CodeBuildComputeType
-        Image: aws/codebuild/standard:6.0
+        Image: aws/codebuild/standard:5.0
         PrivilegedMode: true
         Type: LINUX_CONTAINER
       LogsConfig:
