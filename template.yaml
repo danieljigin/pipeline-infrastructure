@@ -111,3 +111,14 @@ Resources:
       Source:
         Type: CODEPIPELINE
         BuildSpec: buildspecs/buildspec_java11_build_package.yml
+
+Outputs:
+  Java17Builder:
+    Value: !Ref BuildAndPackageForJava17
+    Export:
+      Name: BuildAndPackageForJava17
+  Java11Builder:
+    Value: !Ref BuildAndPackageForJava11
+    Export:
+      Name: BuildAndPackageForJava11
+
