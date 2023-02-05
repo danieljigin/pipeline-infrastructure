@@ -4,5 +4,5 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Listing files in s3..."
-      - aws s3 ls
+      - echo "Uploading files to files in s3..."
+      - aws s3 sync config s3://danieljigin-service-templates

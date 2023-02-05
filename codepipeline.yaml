@@ -21,6 +21,12 @@ Resources:
     Type: AWS::S3::Bucket
     DeletionPolicy: Delete
     UpdateReplacePolicy: Delete
+  ServiceTemplateBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      BucketName: "danieljigin-service-templates"
   # Pipeline Role
   CodeBuildServiceRole:
     Type: AWS::IAM::Role
