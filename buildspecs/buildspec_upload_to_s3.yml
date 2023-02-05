@@ -5,4 +5,4 @@ phases:
   install:
     commands:
       - echo "Uploading files to files in s3..."
-      - aws s3 sync config s3://danieljigin-service-templates
+      - aws s3 sync pipelines s3://danieljigin-service-templates
