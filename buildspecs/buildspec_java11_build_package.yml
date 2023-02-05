@@ -1,0 +1,27 @@
+---
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+    commands:
+      - echo "Entering the install phase..."
+      - echo "Login in to Amazon ECR..."
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/$REPOSITORY_NAME
+      - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)
+  build:
+    commands:
+      - echo "Entering the build phase..."
+      - ./gradlew clean build docker -Ddocker.image.name=$REPOSITORY_NAME
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo "Entering the post build phase..."
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+env:
+  exported-variables:
+    - IMAGE_TAG
+    - REPOSITORY_URI
