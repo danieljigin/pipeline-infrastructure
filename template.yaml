@@ -91,7 +91,7 @@ Resources:
       ServiceRole: !GetAtt CodeBuildServiceRole.Arn
       Source:
         Type: CODEPIPELINE
-        BuildSpec: buildspecs/buildspec_java17_build_package.yml
+        BuildSpec: arn:aws:s3:::danieljigin-service-templates/buildspec_java17_build_package.yml
 
   # CODEBUILD PROJECTS
   BuildAndPackageForJava11:
@@ -110,7 +110,7 @@ Resources:
       ServiceRole: !GetAtt CodeBuildServiceRole.Arn
       Source:
         Type: CODEPIPELINE
-        BuildSpec: buildspecs/buildspec_java11_build_package.yml
+        BuildSpec: arn:aws:s3:::danieljigin-service-templates/buildspec_java11_build_package.yml
 
 Outputs:
   Java17Builder:
