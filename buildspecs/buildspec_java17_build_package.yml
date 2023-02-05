@@ -14,7 +14,7 @@ phases:
   build:
     commands:
       - echo "Entering the build phase..."
-      - ./gradlew clean build docker -Ddocker.image.name=$REPOSITORY_NAME
+      - ./gradlew clean build docker -Ddocker.image.name=$REPOSITORY_NAME -Daws.account.id=$AWS_ACCOUNT_ID
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
