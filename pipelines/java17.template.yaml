@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description:
+Description: Service stack for Java 17 Spring
 Parameters:
   CodeStarConnectionArn: #TODO: Add as parameter resolved from parameter store
     Type: String
