@@ -5,7 +5,7 @@ phases:
   install:
     commands:
       - echo "Downloading files from files from s3..."
-      - aws s3 get-object --bucket s3://danieljigin-service-templates $FILE_NAME
+      - aws s3 cp s3://danieljigin-service-templates/$FILE_NAME .
 artifacts:
   files:
     - '**/*'
