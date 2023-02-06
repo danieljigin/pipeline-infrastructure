@@ -173,6 +173,8 @@ Resources:
                       "type": "PLAINTEXT"
                     }
                   ]
+              InputArtifacts:
+                - Name: SourceCodeAsZip
               OutputArtifacts:
                 - Name: S3FileArtifact
               RunOrder: 1

@@ -267,7 +267,7 @@ Resources:
               OutputArtifacts:
                 - Name: PipeLineStackOutput
               RunOrder: 2
-        - Name: Build
+        - Name: UploadFilesToS3
           Actions:
             - Name: Build
               ActionTypeId:
@@ -282,7 +282,7 @@ Resources:
               OutputArtifacts:
                 - Name: BuildArtifact
               Namespace: Build
-        - Name: DeployDev
+        - Name: DeployServiceTemplate
           Actions:
             - Name: Deploy
               ActionTypeId:
