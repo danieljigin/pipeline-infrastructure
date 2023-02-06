@@ -154,6 +154,28 @@ Resources:
               OutputArtifacts:
                 - Name: SourceCodeAsZip
               RunOrder: 1
+        - Name: UpdatePipeline
+          Actions:
+            - Name: Build
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                ProjectName:
+                  Fn::ImportValue: "DownloadFilesFromS3"
+                EnvironmentVariables: !Sub |
+                  [
+                    {
+                      "name": "FILE_NAME",
+                      "value": "java11.template.yaml",
+                      "type": "PLAINTEXT"
+                    }
+                  ]
+              OutputArtifacts:
+                - Name: S3FileArtifact
+              RunOrder: 1
         - Name: Build
           Actions:
             - Name: Build

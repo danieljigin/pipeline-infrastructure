@@ -1,0 +1,12 @@
+---
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Downloading files from files from s3..."
+      - aws s3 get-object --bucket s3://danieljigin-service-templates $FILE_NAME
+artifacts:
+  files:
+    - '**/*'
+  name: pipeline-template.yml

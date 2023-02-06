@@ -112,6 +112,24 @@ Resources:
         Type: CODEPIPELINE
         BuildSpec: arn:aws:s3:::danieljigin-service-templates/buildspec_java11_build_package.yml
 
+  DownloadFilesFromS3:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        ComputeType: !Ref CodeBuildComputeType
+        Image: aws/codebuild/standard:6.0
+        PrivilegedMode: true
+        Type: LINUX_CONTAINER
+      LogsConfig:
+        CloudWatchLogs:
+          Status: ENABLED
+      ServiceRole: !GetAtt CodeBuildServiceRole.Arn
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: arn:aws:s3:::danieljigin-service-templates/buildspec_download_from_s3.yml
+
 Outputs:
   Java17Builder:
     Value: !Ref BuildAndPackageForJava17
@@ -121,4 +139,8 @@ Outputs:
     Value: !Ref BuildAndPackageForJava11
     Export:
       Name: BuildAndPackageForJava11
+  DownloadFilesFromS3Builder:
+    Value: !Ref DownloadFilesFromS3
+    Export:
+      Name: DownloadFilesFromS3
 
